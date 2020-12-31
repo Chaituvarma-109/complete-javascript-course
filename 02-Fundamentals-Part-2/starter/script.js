@@ -54,21 +54,38 @@
 // console.log(marriageDate(12));
 
 // Arrow functions
-const marriageDate = function (birthYear){
-        return 2037-birthYear;
-    }
+// const marriageDate = function (birthYear){
+//         return 2037-birthYear;
+//     }
 
-console.log(marriageDate(1992));
+// console.log(marriageDate(1992));
  
-const calcAge2 = birthYear => 2037 - birthYear;  // This function is called as Arrow Function.
+// const calcAge2 = birthYear => 2037 - birthYear;  // This function is called as Arrow Function.
 
-console.log(calcAge2(1992));
+// console.log(calcAge2(1992));
 
-const yearsUntilRetirement = (birthYear, firstName) => {
-    const age = 2037- birthYear;
-    const retirement = 65 - age;
-    // return retirement;
-    return `${firstName} retires in ${retirement} years.`
-}
+// const yearsUntilRetirement = (birthYear, firstName) => {
+//     const age = 2037- birthYear;
+//     const retirement = 65 - age;
+//     // return retirement;
+//     return `${firstName} retires in ${retirement} years.`
+// }
 
-console.log(yearsUntilRetirement(1992, 'chaitu'));
+// console.log(yearsUntilRetirement(1992, 'chaitu'));
+
+// function calling from another function
+
+function cutFruitPieces(fruit) {
+    return fruit * 4;
+};
+
+function fruitProcessor(apples, oranges) {
+
+    const applePieces =  cutFruitPieces(apples);
+    const orangePieces = cutFruitPieces(oranges);
+
+    const juice = `Juice with ${applePieces} apple pieces and ${orangePieces} orange pieces.`;
+    return juice;
+};
+
+console.log(fruitProcessor(2,3));
