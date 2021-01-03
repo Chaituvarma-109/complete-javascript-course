@@ -220,3 +220,64 @@
 // // challenge
 
 // console.log(userBioData.getSummary());
+
+// For Loops
+
+// for  (let rep = 1; rep < 11; rep++) {
+//     console.log(`repetitions of this execercise ${rep}`);
+// }
+
+// const chaitu = ['Indra', 2021, 'jan', ['rakesh','srinu','chintu'],'schmit',1864,'Bhimavaram'];
+
+// for(let arr=0; arr<chaitu.length;arr++) {
+//     if (typeof(chaitu[arr]) === "object"){
+//         let Arr = chaitu[arr];
+//         for(let i=0; i<Arr.length;i++){
+//             console.log(Arr[i]);
+//         }
+//     }
+//     else{console.log(chaitu[arr]);}
+// }
+
+// const types = [];
+
+// for(let arr=0; arr<chaitu.length;arr++){
+//     //types[arr] = typeof (chaitu[arr]);
+
+//     types.push(typeof chaitu[arr]);
+// }
+
+// console.log(types)
+
+// const birthYear = [1992, 1864, 1666, 1758];
+
+// const age = [];
+
+// for (let year = 0; year<birthYear.length; year++){
+//     age.push(2037-birthYear[year]);
+// }
+
+// console.log(age)
+
+// for (let ind=chaitu.length-1; ind>=0; ind--){
+//     console.log(chaitu[ind]);
+// }
+
+// for (let execercise = 1; execercise < 4; execercise++){
+//     console.log(`-----Starting Excercise ${execercise}`);
+
+//     for (let rep = 1; rep<6; rep++){
+//         console.log(`Lifting weight repetition ${rep}`);
+//     }
+// }
+
+// while loop
+
+// let dice = Math.trunc(Math.random()*6)+1;
+
+// console.log(dice);
+
+// while(dice!=6){
+//     console.log(`You rolled dice of value ${dice}`);
+//     dice = Math.trunc(Math.random()*6)+1;
+// }
