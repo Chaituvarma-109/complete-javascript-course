@@ -132,18 +132,91 @@
 
 // console.log(res);
 
-const friends = ['chaitu', 'bunny', 'vasu'];
-const newLength = friends.push('veera');
-friends.push('rakesh');
+// const friends = ['chaitu', 'bunny', 'vasu'];
+// const newLength = friends.push('veera');
+// friends.push('rakesh');
 
-console.log(friends);
-console.log(newLength);
+// console.log(friends);
+// console.log(newLength);
 
-friends.unshift('john');
+// friends.unshift('john');
 
-console.log(friends);
+// console.log(friends);
 
-friends.pop();
-const poppedEle = friends.pop();
-console.log(friends);
-console.log(poppedEle);
+// friends.pop();
+// const poppedEle = friends.pop();
+// console.log(friends);
+// console.log(poppedEle);
+
+// Objects 
+
+// const userBioData = {
+//     firstName: 'Chaitanya',
+//     lastName: 'Varma',
+//     Age: 22,
+//     Proper: 'Andhra Pradesh',
+//     Country: 'India',
+//     friends: ['rakesh','srinu','chintu']
+// };
+
+// console.log(userBioData['firstName']);
+
+// console.log(userBioData.Country);
+
+// const nameKey = 'Name';
+// console.log(userBioData['first'+nameKey]);
+// console.log(userBioData['last'+nameKey]);
+
+// const interestedIn = prompt(`Which user information do you want to know. Enter the Firstname or lastname or age or proper or country.`);
+
+// console.log(userBioData[interestedIn]);
+
+// if (userBioData[interestedIn]) {
+//     console.log(userBioData[interestedIn]);
+// }
+// else {
+//     console.log('wrong! please choose another Option');
+// }
+
+// userBioData.job = 'Software Developer.'
+// userBioData['salary'] = 22334;
+// console.log(userBioData);
+
+// console.log(`${userBioData.firstName} has ${userBioData.friends.length} and his best friend is ${userBioData.friends[0]}.`);
+
+// const userBioData = {
+//         firstName: 'Chaitanya',
+//         lastName: 'Varma',
+//         birthYear: 1992,
+//         job : 'teacher',
+//         Proper: 'Andhra Pradesh',
+//         Country: 'India',
+//         friends: ['rakesh','srinu','chintu'],
+//         hasDriversLicense: false,
+
+        // calcAge: function(birthYear) {
+        //     return 2037 - birthYear;
+        // }
+
+        // calcAge: function() {
+        //     return 2037 - this.birthYear;
+        // }
+
+//         calcAge: function() {
+//             this.age = 2037 - this.birthYear;
+//             return this.age;
+//         },
+
+//         getSummary : function() {
+//             return `${this.firstName+this.lastName} is a ${this.age} old ${this.job} and he has ${this.hasDriversLicense ? 'a' : 'no'} Driver's License.`;
+//         }
+//     };
+
+// console.log(userBioData.calcAge());
+// // console.log(userBioData['calcAge'](1992));
+
+// console.log(userBioData.age);
+
+// // challenge
+
+// console.log(userBioData.getSummary());
