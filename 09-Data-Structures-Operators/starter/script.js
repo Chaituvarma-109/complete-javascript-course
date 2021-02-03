@@ -63,6 +63,50 @@ const restaurant = {
   },
 };
 
+// set
+const orderSet = new Set([
+  'pizza',
+  'pasta',
+  'pasta',
+  'risotto',
+  'pizza',
+  'pasta',
+]);
+
+console.log(orderSet);
+
+console.log(new Set('Chaitanya'));
+
+// To find size of the set
+console.log(orderSet.size);
+
+// To find a element is present or not
+console.log(orderSet.has('pasta'));
+console.log(orderSet.has('bread'));
+
+// To add an element to a set
+orderSet.add('garlic bread');
+console.log(orderSet);
+
+// To delete an element
+orderSet.delete('pasta');
+console.log(orderSet);
+
+// clear elements in a set
+// orderSet.clear();
+
+// looping over set
+let ammy = [];
+for (const order of orderSet) {
+  ammy.push(order);
+}
+console.log(ammy);
+
+// Example
+const resStaff = ['chef', 'manager', 'waiter', 'chef', 'waiter'];
+const uniqueResStaff = [...new Set(resStaff)];
+console.log(uniqueResStaff);
+
 // // Looping over objects using keys.
 // const propKeys = Object.keys(restaurant);
 // console.log(propKeys);
