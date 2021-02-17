@@ -65,13 +65,13 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -105,3 +105,38 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(letters.join('-'));
 
 //------------------------------------------------------ForEach Method--------------------------------------------------------------------
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const movement of movements) {
+  if (movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You Withdrew ${Math.abs(movement)}`);
+  }
+}
+
+console.log(`------------------------------------`);
+
+movements.forEach(function (movement, index) {
+  if (movement > 0) {
+    console.log(`Movement ${index + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${index + 1}:You Withdrew ${Math.abs(movement)}`);
+  }
+});
+
+//------------------------------------------------------ForEach Map and Sets--------------------------------------------------------------
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+currencies.forEach(function (currency, key) {
+  console.log(key, currency);
+});
+
+// SET - in sets both value and key are same.
+const currenciesUnique = new Set(['USD', 'GBP', 'EUR', 'INR']);
+currenciesUnique.forEach(function (currency) {
+  console.log(currency);
+});
