@@ -9,7 +9,7 @@
 // const [x, y, z] = arr;
 // console.log(x, y, z);
 
-// Object Literals Enhancement.
+// --------------------------------------------------- Object Literals Enhancement.-------------------------------------------
 const weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const openingHours = {
   [weekDays[3]]: {
@@ -25,6 +25,7 @@ const openingHours = {
     close: 24,
   },
 };
+// ---------------------------------------------------------------------------------------------------------------------------
 
 const restaurant = {
   Name: 'Classico Italiano',
@@ -62,8 +63,212 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+// ----------------------------------------------------- Strings --------------------------------------------------------------
+const airPlane = 'TAP Air Portugal';
+const plane = 'A320';
 
-// set
+// Accesing individual array elements
+console.log(airPlane[2]);
+const strArr = [...airPlane];
+console.log(strArr);
+
+// Length
+console.log(plane.length);
+console.log(airPlane.length);
+
+// Index Operation of String
+console.log(airPlane.indexOf('P'));
+console.log(airPlane.lastIndexOf('P'));
+console.log(airPlane.indexOf('Air'));
+
+// Slice operation on String
+console.log(airPlane.slice(2));
+const newSubStr = airPlane.slice(4);
+console.log(newSubStr);
+console.log(airPlane.slice(2, 6));
+console.log(airPlane.slice(-3));
+console.log(airPlane.slice(-5, -2));
+console.log(airPlane.slice(0, airPlane.indexOf(' ')));
+console.log(airPlane.slice(airPlane.lastIndexOf(' ') + 1));
+
+// example
+const middleSeat = function (seat) {
+  const seatNo = seat.slice(-1);
+  if (seatNo === 'B' || seatNo === 'C') {
+    console.log('It is a middle seat');
+  } else {
+    console.log('Not a middle Seat');
+  }
+};
+
+middleSeat('11B');
+middleSeat('83A');
+middleSeat('3C');
+
+// String Methods
+console.log(airPlane.toLowerCase());
+console.log(airPlane.toUpperCase());
+
+// Example
+const strName = 'jOnas';
+const lStrName = strName.toLowerCase();
+const oStrName = lStrName[0].toUpperCase() + lStrName.slice(1);
+console.log(oStrName);
+
+// Example email problem
+const email = 'hello@jonas.com';
+const loginEmail = 'Hello@Jonas.com';
+
+const lowerEmail = loginEmail.toLowerCase();
+console.log(lowerEmail);
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+// see trimstart() and trimend()
+// replace method
+const priceGB = '299,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All Passengers come to Boarding door 23! Boarding door 23!';
+console.log(announcement.replace('door', 'gate'));
+console.log(announcement.replaceAll('door', 'gate'));
+
+// Includes(), endswith(), startswith()
+const airplaneName = 'AirBus Air320neo';
+console.log(airplaneName.includes('Air'));
+console.log(airplaneName.includes('Bir'));
+
+console.log(airplaneName.startsWith('Air'));
+console.log(airplaneName.endsWith('Bir'));
+
+//Split Method
+console.log('A+Very+Long+Hair'.split('+'));
+const splitArr = 'Chaitanya Varma'.split(' ');
+console.log(splitArr);
+const [firstName, lastName] = 'Uddarraju Chaitanya Varma'.split(' ');
+console.log(firstName, lastName);
+
+//Join Method
+const joinArr = ['Mr', firstName, lastName.toUpperCase()].join(' ');
+console.log(joinArr);
+
+// Example
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const nameUpper = [];
+
+  for (const n of names) {
+    // nameUpper.push(n[0].toUpperCase() + n.slice(1));
+    nameUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(nameUpper.join(' '));
+};
+
+const passenger = 'jessica ann smith davies';
+capitalizeName(passenger);
+capitalizeName('chaitanya varma');
+
+//Padding a string
+const msg = 'My age is 28.';
+console.log(msg.padStart(25, '@'));
+
+const msg1 = 'My name is chaitu';
+console.log(msg1.padEnd(25, '+'));
+
+//Example
+const creditCardMask = function (number) {
+  const strNum = number + '';
+  const last = strNum.slice(-4);
+  return last.padStart(strNum.length, '*');
+};
+
+console.log(creditCardMask(64364458));
+console.log(creditCardMask(3419846592704458));
+
+// Repeat Method
+const message2 = 'Bad weather... All Departures Delayed....';
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'🛬'.repeat(n)}`);
+};
+
+planesInLine(5);
+planesInLine(10);
+planesInLine(20);
+
+//------------------------------------------------------ Map data structure --------------------------------------------------
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'New Delhi, India');
+rest.set(2, 'Hyderabad, India');
+
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open')
+  .set(false, 'we are close');
+
+console.log(rest);
+
+console.log(rest.get('name'));
+console.log(rest.get(true));
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+console.log(rest.has('categories'));
+rest.delete(2);
+console.log(rest);
+console.log(rest.size);
+// rest.clear()
+
+const mapArr = [1, 2];
+rest.set(mapArr, 'test');
+console.log(rest);
+console.log(rest.get(mapArr));
+
+rest.set(document.querySelector('h1'), 'heading');
+console.log(rest);
+
+// ---------------------------------------------------------------- Maps Iteration -------------------------------------------
+const question = new Map([
+  ['Question', 'What is the best programming Language'],
+  [1, 'C'],
+  [2, 'Python'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'correct 🎉'],
+  [false, 'Try Again'],
+]);
+
+console.log(question);
+
+// Convert Object to Map
+const openHours = new Map(Object.entries(openingHours));
+console.log(openHours);
+
+//Iteration over map iterables using for-loop
+console.log(question.get('Question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+
+// const answer = Number(prompt('Your Answer: '));
+// console.log(question.get(answer === question.get('correct')));
+
+// Convert Map to Array
+console.log([...question]);
+
+//using spread operator on maps
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+// ------------------------------------------------------------ set ----------------------------------------------------------
 const orderSet = new Set([
   'pizza',
   'pasta',
@@ -107,6 +312,8 @@ const resStaff = ['chef', 'manager', 'waiter', 'chef', 'waiter'];
 const uniqueResStaff = [...new Set(resStaff)];
 console.log(uniqueResStaff);
 
+// --------------------------------------------------- Looping Objects -------------------------------------------------------
+
 // // Looping over objects using keys.
 // const propKeys = Object.keys(restaurant);
 // console.log(propKeys);
@@ -134,6 +341,7 @@ console.log(uniqueResStaff);
 //   console.log(`we open ${key} at ${open} and closes on ${close}`);
 // }
 
+// ------------------------------------------------------- optional Chaining -------------------------------------------------
 // Before optional chaining.
 // if (restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);
 
@@ -181,7 +389,7 @@ console.log(uniqueResStaff);
 // console.log(personArr[0]?.name ?? 'name does not exist.');
 // console.log(personArr[2]?.name ?? 'name does not exist.');
 
-// Destructuring Arrays.
+// -------------------------------------------------- Destructuring Arrays.---------------------------------------------------
 // restaurant.orderDelivery({
 //   time: '23:30',
 //   address: 'Via del Sole, 21',
@@ -245,7 +453,7 @@ console.log(uniqueResStaff);
 // } = openingHours;
 // console.log(open, close);
 
-// spread opreator
+// ---------------------------------------------------------- spread opreator ------------------------------------------------
 // const arr = [7, 8, 9];
 // const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
 // console.log(badNewArr);
@@ -292,7 +500,7 @@ console.log(uniqueResStaff);
 // console.log(restaurantCopy.name);
 // console.log(restaurant.Name);
 
-// Rest operator, because on left side of =.
+// --------------------------------------- Rest operator, because on left side of =.--------------------------------------------
 // const [a, b, ...other] = [1, 2, 3, 4];
 // console.log(a, b, other);
 
@@ -321,7 +529,7 @@ console.log(uniqueResStaff);
 // // example
 // restaurant.orderingPizza('Mushrooms', 'Onions', 'Olives', 'spinach');
 
-// short-circuiting
+// ---------------------------------------------------------- short-circuiting ------------------------------------------------
 
 // Short-Circuiting using OR.
 // console.log(3 || 'jonas');
@@ -348,7 +556,7 @@ console.log(uniqueResStaff);
 // // practical example
 // restaurant.orderingPizza && restaurant.orderingPizza('mushrooms', 'spinach');
 
-// Null Coalescing Operator
+// ------------------------------------------------------Null Coalescing Operator-----------------------------------------------
 // restaurant.numGuests = 0;
 // const guests = restaurant.numGuests || 10;
 // console.log(guests);
@@ -356,7 +564,7 @@ console.log(uniqueResStaff);
 // const correctGuests = restaurant.numGuests ?? 10;
 // console.log(correctGuests);
 
-// For-of Loop
+// -------------------------------------------------------For-of Loop-----------------------------------------------------------
 // const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 // for (const item of menu) {
 //   console.log(item);
