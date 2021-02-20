@@ -61,6 +61,85 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayTransactions = function (movements) {
+  containerMovements.innerHTML = '';
+  movements.forEach(function (movement, index) {
+    const type = movement > 0 ? 'deposit' : 'withdrawal';
+    const html = `
+        <div class="movements__row">
+          <div class="movements__type movements__type--${type}">${
+      index + 1
+    } ${type}</div>
+          <div class="movements__value">${movement}€</div>
+        </div>
+    `;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, movement) => acc + movement, 0);
+  labelBalance.textContent = `${balance} €`;
+};
+
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = acc.movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = acc.movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * acc.interestRate) / 100)
+    .filter(int => int > 1)
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+
+const createUserNames = function (accounts) {
+  accounts.forEach(function (account) {
+    account.userName = account.owner
+      .toLowerCase()
+      .split(' ')
+      .map(names => names[0])
+      .join('');
+  });
+};
+
+createUserNames(accounts);
+
+let currentAccount;
+
+// Login Event Handlers
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    accnt => accnt.userName === inputLoginUsername.value
+  );
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+    // Clear input fields
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+    // Display movements
+    displayTransactions(currentAccount.movements);
+    // Display balance
+    calcDisplayBalance(currentAccount.movements);
+    // Display summary
+    calcDisplaySummary(currentAccount);
+  }
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -140,3 +219,55 @@ const currenciesUnique = new Set(['USD', 'GBP', 'EUR', 'INR']);
 currenciesUnique.forEach(function (currency) {
   console.log(currency);
 });
+
+//------------------------------------------------------Map Method------------------------------------------------------------------------
+const eurToUsd = 1.1;
+const movementsUsd = movements.map(movement => {
+  return movement * eurToUsd;
+});
+console.log(movementsUsd);
+
+const movementsDescription = movements.map(
+  (mov, index) =>
+    `mov ${index + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+
+console.log(movementsDescription);
+
+//------------------------------------------------------Filter Method---------------------------------------------------------------------
+const deposits = movements.filter(mov => mov > 0);
+console.log(deposits);
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
+//------------------------------------------------------Filter Method---------------------------------------------------------------------
+const balance = movements.reduce((acc, mov) => {
+  return acc + mov;
+}, 0);
+console.log(balance);
+// Find Maximum Value using reduce
+const max = movements.reduce((acc, val) => {
+  if (acc > val) {
+    return acc;
+  } else {
+    return val;
+  }
+}, movements[0]);
+console.log(max);
+
+//------------------------------------------------------Find Method-----------------------------------------------------------------------
+const firstWithDrawl = movements.find(mov => mov < 0);
+console.log(firstWithDrawl);
+
+const account = accounts.find(accnt => accnt.owner === 'Jessica Davis');
+console.log(account);
+// using for-of loop implementation
+for (const accnt of accounts) {
+  if (accnt.owner === 'Jessica Davis') {
+    console.log(accnt);
+    break;
+  } else {
+    console.log(`not present`);
+  }
+}
